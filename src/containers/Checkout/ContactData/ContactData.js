@@ -16,7 +16,8 @@ export default class ContactData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       street: {
         elementType: "input",
@@ -25,7 +26,8 @@ export default class ContactData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       zipCode: {
         elementType: "input",
@@ -36,7 +38,8 @@ export default class ContactData extends Component {
           minLength: 5,
           maxLength: 5
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       country: {
         elementType: "input",
@@ -45,7 +48,8 @@ export default class ContactData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       email: {
         elementType: "input",
@@ -54,7 +58,8 @@ export default class ContactData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       deliveryMethod: {
         elementType: "select",
@@ -128,6 +133,7 @@ export default class ContactData extends Component {
       updatedFormElement.value,
       updatedFormElement.validation
     );
+    updatedFormElement.touched = true;
     console.log(updatedFormElement);
 
     updatedOrderForm[inputIdentifier] = updatedFormElement;
@@ -152,6 +158,7 @@ export default class ContactData extends Component {
             value={formElement.config.value}
             shouldValidate={formElement.config.validation}
             invalid={!formElement.config.valid}
+            touched={formElement.config.touched}
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
