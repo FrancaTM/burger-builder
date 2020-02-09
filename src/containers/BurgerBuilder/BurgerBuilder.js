@@ -131,7 +131,6 @@ class BurgerBuilder extends Component {
 
   render() {
     const disabledInfo = {
-      // ...this.state.ingredients
       ...this.props.ings
     };
     for (const key in disabledInfo) {
@@ -150,8 +149,8 @@ class BurgerBuilder extends Component {
         <Aux>
           <Burger ingredients={this.props.ings} />
           <BuildControls
-            ingredientAdded={this.onIngredientAdded}
-            ingredientRemoved={this.onIngredientRemoved}
+            ingredientAdded={this.props.onIngredientAdded}
+            ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledInfo}
             purchasable={this.state.purchasable}
             ordered={this.purchaseHandler}
@@ -191,10 +190,12 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  onIngredientAdded: ingName =>
-    dispatch({ type: actionTypes.ADD_INGREDIENT, ingredientName: ingName });
-  onIngredientRemoved: ingName =>
-    dispatch({ type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName });
+  return {
+    onIngredientAdded: ingName =>
+      dispatch({ type: actionTypes.ADD_INGREDIENT, ingredientName: ingName }),
+    onIngredientRemoved: ingName =>
+      dispatch({ type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName })
+  };
 };
 
 export default connect(
