@@ -19,9 +19,7 @@ class BurgerBuilder extends Component {
 
   state = {
     // purchasable: false,
-    purchasing: false,
-    loading: false,
-    error: false
+    purchasing: false
   };
 
   updatePurchaseState(ingredients) {
@@ -48,16 +46,7 @@ class BurgerBuilder extends Component {
     this.props.history.push("/checkout");
   };
 
-  componentDidMount() {
-    // axios
-    //   .get("https://react-burger-builder-c6b9c.firebaseio.com/ingredients.json")
-    //   .then(response => {
-    //     this.setState({ ingredients: response.data });
-    //   })
-    //   .catch(error => {
-    //     this.setState({ error: true });
-    //   });
-  }
+  componentDidMount() {}
 
   render() {
     const disabledInfo = {
@@ -96,9 +85,6 @@ class BurgerBuilder extends Component {
           purchaseContinued={this.purchaseContinueHandler}
         />
       );
-    }
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
     }
 
     return (
